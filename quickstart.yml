@@ -1,0 +1,20 @@
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: quickstart
+spec:
+  version: 7.14.0
+  monitoring:
+    metrics:
+      elasticsearchRefs:
+        - name: monitoring
+          namespace: monitoring
+    logs:
+      elasticsearchRefs:
+        - name: monitoring
+          namespace: monitoring
+  nodeSets:
+  - name: es
+    count: 3
+    config:
+      node.store.allow_mmap: false

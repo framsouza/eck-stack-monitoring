@@ -1,0 +1,19 @@
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata:
+  name: quickstart
+spec:
+  version: 7.14.0
+  count: 1
+  elasticsearchRef:
+    name: quickstart
+  config:
+  monitoring:
+    metrics:
+      elasticsearchRefs:
+        - name: monitoring
+          namespace: monitoring
+    logs:
+      elasticsearchRefs:
+        - name: monitoring
+          namespace: monitoring
